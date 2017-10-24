@@ -1,0 +1,17 @@
+Import('env')
+Import('GOOGLETEST_LIB')
+Import('HERMES_LIB_HERMES')
+
+thisenv = env.Clone()
+thisenv.AppendUnique(LIBS = [HERMES_LIB_HERMES, GOOGLETEST_LIB, 'pthread'])
+thisenv.AppendUnique(CPPPATH = [
+	'#/src/lib/hermes',
+	'$GOOGLETEST_INCLUDE',
+])
+
+main = thisenv.Program('test_hermes', 'hermes.cpp')
+
+test = thisenv.Command(target='test_hermes.log',
+		source=main,
+		action='$SOURCE > $TARGET')
+env.Depends(test, main)

@@ -1,0 +1,11 @@
+Import('env')
+
+env.SConscript('tp/SConscript', exports=['env'])
+
+env.AppendUnique(CPPPATH = '#/tp/tbb/2018.1/include')
+env.AppendUnique(LIBPATH = '#/tp/tbb/2018.1/lib/linux_gcc6')
+env.AppendUnique(LIBS = [
+	'libtbbmalloc_proxy.so',
+	'libtbbmalloc.so',
+	'libtbb.so',
+])

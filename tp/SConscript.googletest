@@ -1,0 +1,13 @@
+Import('env')
+
+thisenv = env.Clone()
+env.AppendUnique(GOOGLETEST_INCLUDE = '#/tp/googletest/googletest/include')
+GOOGLETEST_LIB = thisenv.StaticLibrary('libgtest', 'googletest/googletest/src/gtest-all.cc',
+	CPPPATH=[
+		'#/tp/googletest/googletest/include',
+		'#/tp/googletest/googletest',
+	],
+	LIBS = ['pthread']
+)
+
+Export('GOOGLETEST_LIB')

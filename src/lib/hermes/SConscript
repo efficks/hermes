@@ -1,0 +1,13 @@
+Import('env')
+
+HERMES_LIB_HERMES = env.SharedLibrary('hermes', [
+	'message.cpp',
+	'engine.cpp',
+	'node.cpp',
+	'sendernode.cpp',
+	'receivernode.cpp',
+	'input.cpp',
+	'inputfile.cpp',
+])
+
+Export('HERMES_LIB_HERMES')
